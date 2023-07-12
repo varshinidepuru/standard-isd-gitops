@@ -1,33 +1,16 @@
 # Update Instructions
 
-Please follow these instructions if you are updating any values after the installation. The current installtion could have been installed using helm (Scenario A) or using the gitops installer (Scenario B). Please follow the steps as per your current scenario.
+Please follow these instructions if you are updating any values after the installation. The current installation could have been installed using helm or using the gitops installer. Please follow the steps as per your current scenario.
 
-## Scenario A
-Use these instructions if:
-- You have a 3.12.x installed using the helm installer and
-- Already have a "gitops-repo" for Spinnaker Configuration
-- Have values.yaml that was used for helm installation
+# Use this set if instructions if:
 
-Execute these commands, replacing "gitops-repo" with your repo
-- `git clone `**https://github.com/.../gitops-repo**
-- `git clone https://github.com/OpsMx/standard-isd-gitops.git -b 4.0`
-- `cp -r standard-isd-gitops/upgrade gitops-repo`  
-- `cd gitops-repo`
-- Edit the existing "values.yaml", that was used for previous installation and do the changes according to your needs.
-- Copy the updated values file as "values.yaml" (file name is important)
-
-## Scenario B
-Use this set if instructions if:
-a) You have a 3.12 installed using gitops installer
+a) You have a 4.0.3.1 installed and required to update values
 b) Already have a gitops-repo for ISD (AP and Spinnaker) Configuration
 
 Execute these commands, replacing "gitops-repo" with your repo
-Execute these commands, replacing "gitops-repo" with your repo
 - `git clone `**https://github.com/.../gitops-repo**
-- `git clone https://github.com/OpsMx/standard-isd-gitops.git -b 4.0`
-- `cp -r standard-isd-gitops.git/upgrade gitops-repo/` 
 - `cd gitops-repo`
-- Check that a "values.yaml" file exists in this directory (root of the gitops-repo).
+- Check that if a "values.yaml" file exists in this directory (root of the gitops-repo).
 - Edit the existing "values.yaml", that was used for previous installation and do the changes according to your needs.
 
 ## Common Steps
@@ -43,9 +26,9 @@ Execute these commands, replacing "gitops-repo" with your repo
    - `kubectl -n opsmx-isd scale deploy -l app=oes --replicas=0` Wait for a min or two
    - `kubectl -n opsmx-isd scale deploy -l app=oes --replicas=1` Wait for all pods to come to ready state
  
-19. Go to ISD UI and check if it is up successfully.
-20. Wait for about 5 min for autoconfiguration to take place.
-21. If required: a) Connect Spinnaker again b) Configure pipeline-promotion again. To do this, in the ISD UI:
+8. Go to ISD UI and check if it is up successfully.
+9. Wait for about 5 min for autoconfiguration to take place.
+10. If required: a) Connect Spinnaker again b) Configure pipeline-promotion again. To do this, in the ISD UI:
    - Click setup
    - Click Spinnaker tab at the top. Check if "External Accounts" and "Pipeline-promotion" columns show "yes". If any of them is "no":
    - Click "edit" on the 3 dots on the far right. Check the values already filled in, make changes if required and click "update".
