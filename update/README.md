@@ -2,8 +2,6 @@
 
 Please follow these instructions if you are updating any values after the installation. The current installtion could have been installed using helm (Scenario A) or using the gitops installer (Scenario B). Please follow the steps as per your current scenario.
 
-**WARNING**: Please backup all the databases, in particualr the Posgres DB, BEFORE beginning the upgrade. Backup procedures may differ depending your usage of external DBs and Spinnaker configuration. 
-
 ## Scenario A
 Use these instructions if:
 - You have a 3.12.x installed using the helm installer and
@@ -18,16 +16,6 @@ Execute these commands, replacing "gitops-repo" with your repo
 - Copy the existing "values.yaml", that was used for previous installation into this folder. We will call it values-312.yaml
 - diff values-402.yaml values-312.yaml and merge all of your changes into "values.yaml". **NOTE**: In most cases just replacing images v3.12.x with v4.0.2 is enough.
 - Copy the updated values file as "values.yaml" (file name is important)
-- create gittoken secret. This token will be used to authenticate to the gitops-repo
-   - `kubectl -n oes create secret generic gittoken --from-literal gittoken=PUT_YOUR_GITTOKEN_HERE` 
-- create secrets mentioned above. **NOTE**: You only need to create these secrets if they are changed from the default
-   - `kubectl -n oes create secret generic ldapconfigpassword --from-literal ldapconfigpassword=PUT_YOUR_SECRET_HERE`
-   - `kubectl -n oes create secret generic ldappassword --from-literal ldappassword=PUT_YOUR_SECRET_HERE`
-   - `kubectl -n oes create secret generic miniopassword --from-literal miniopassword=PUT_YOUR_SECRET_HERE`
-   - `kubectl -n oes create secret generic redispassword --from-literal redispassword=PUT_YOUR_SECRET_HERE`
-   - `kubectl -n oes create secret generic saporpassword --from-literal saporpassword=PUT_YOUR_SECRET_HERE`
-   - `kubectl -n oes create secret generic rabbitmqpassword --from-literal rabbitmqpassword=PUT_YOUR_SECRET_HERE`
-   - `kubectl -n oes create secret generic keystorepassword --from-literal keystorepassword=PUT_YOUR_SECRET_HERE`
 
 ## Scenario B
 Use this set if instructions if:
