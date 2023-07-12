@@ -31,7 +31,6 @@ Execute these commands, replacing "gitops-repo" with your repo
 - Edit the existing "values.yaml", that was used for previous installation and do the changes according to your needs.
 
 ## Common Steps
-Upgrade sequence: (3.12 to 4.0.2)
 1. Ensure that "default" account is configured to deploy to the ISD namespace (e.g. oes)
 2. Push changes to git: `git add -A; git commit -m "Updated related changes";git push`
 3. `kubectl -n opsmx-isd replace --force -f ISD-Generate-yamls-job.yaml`
